@@ -1157,6 +1157,9 @@ pre .javascript .function {
     text-align: justify;
   }
 }
+.posts-expand .post-body h1 {
+  padding: 10px 0;
+}
 .posts-expand .post-body h2,
 .posts-expand .post-body h3,
 .posts-expand .post-body h4,
@@ -1714,7 +1717,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #0921b9;
+  background: #a395ed;
 }
 .links-of-blogroll {
   font-size: 13px;

@@ -42,7 +42,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Focal Lab, NexTD" />
+  <meta name="keywords" content="Java,Intellij IDEA,Live Template," />
 
 
 
@@ -60,16 +60,21 @@
 
 
 
-<meta name="description" content="热衷于搞些技术尝鲜">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Focal LAB">
-<meta property="og:url" content="http://focalab.com/index.html">
+<meta name="description" content="相信Java码农们大多都有过反复敲写这段代码的心酸经历： 123public static void main(String[] args) &amp;#123;    System.out.println(&quot;Hello World&quot;);&amp;#125; 不过，这种糟心的状况在各位接触IDE工具以后得到了较好改善。的确现在只需输入psvm、sout等提示性关键字，再按下TAB键，便能在短短几秒内自动生成上述代">
+<meta name="keywords" content="Java,Intellij IDEA,Live Template">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Intellij IDEA自定义代码模板">
+<meta property="og:url" content="http://focalab.com/2018/02/17/intellij-live-template/index.html">
 <meta property="og:site_name" content="Focal LAB">
-<meta property="og:description" content="热衷于搞些技术尝鲜">
+<meta property="og:description" content="相信Java码农们大多都有过反复敲写这段代码的心酸经历： 123public static void main(String[] args) &amp;#123;    System.out.println(&quot;Hello World&quot;);&amp;#125; 不过，这种糟心的状况在各位接触IDE工具以后得到了较好改善。的确现在只需输入psvm、sout等提示性关键字，再按下TAB键，便能在短短几秒内自动生成上述代">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://focalab.com/images/settings-live-template.jpg">
+<meta property="og:image" content="http://focalab.com/images/live-template-variables.jpg">
+<meta property="og:updated_time" content="2018-02-17T09:17:54.385Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Focal LAB">
-<meta name="twitter:description" content="热衷于搞些技术尝鲜">
+<meta name="twitter:title" content="Intellij IDEA自定义代码模板">
+<meta name="twitter:description" content="相信Java码农们大多都有过反复敲写这段代码的心酸经历： 123public static void main(String[] args) &amp;#123;    System.out.println(&quot;Hello World&quot;);&amp;#125; 不过，这种糟心的状况在各位接触IDE工具以后得到了较好改善。的确现在只需输入psvm、sout等提示性关键字，再按下TAB键，便能在短短几秒内自动生成上述代">
+<meta name="twitter:image" content="http://focalab.com/images/settings-live-template.jpg">
 
 
 
@@ -90,9 +95,9 @@
 
 
 
-  <link rel="canonical" href="http://focalab.com/"/>
+  <link rel="canonical" href="http://focalab.com/2018/02/17/intellij-live-template/"/>
 
-  <title> Focal LAB </title>
+  <title> Intellij IDEA自定义代码模板 | Focal LAB </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -119,9 +124,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-right 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
     <div class="headband"></div>
     
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader" style="background-image: url('/uploads/home_bg5.jpg');">
@@ -203,6 +206,27 @@
 </nav>
 
  </div>
+      <div class="header-post"> 
+  <div class="post-header">
+      <div class="tags">
+      
+        <a href="/tags/Java/" rel="tag" title="Java">Java</a>
+      
+        <a href="/tags/Intellij-IDEA/" rel="tag" title="Intellij IDEA">Intellij IDEA</a>
+      
+        <a href="/tags/Live-Template/" rel="tag" title="Live Template">Live Template</a>
+      
+      </div>
+      <h1>Intellij IDEA自定义代码模板</h1>
+      <h2 class="subtitle"></h2>
+      <div class="post-time">
+        <span class="post-meta-item-text">发表于 </span>
+        <time itemprop="dateCreated" datetime="2018-02-17T14:01:40+08:00" content="2018-02-17" title="2018-02-17 14:01:40">
+          2018-02-17
+        </time>
+      </div>
+  </div>
+ </div>
     </header>
 
 
@@ -211,9 +235,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -233,10 +257,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2018/02/17/intellij-live-template/" itemprop="url">
-                  Intellij IDEA自定义代码模板
-                </a>
+                Intellij IDEA自定义代码模板
               
             
           </h1>
@@ -276,247 +297,101 @@
       
 
       
-        
-          
-          相信Java码农们大多都有过反复敲写这段代码的心酸经历：
-123public static void main(String[] args) &#123;    System.out.println("Hello World");&#125;
-不过，这种糟心的状况在各位接触IDE工具以后得到了较好改善。的确现在只需输入psvm、sout等提示性关键字，再按下TAB键，便能在短短几秒内自动生成上述代码段。是不是觉得黑科技感十足？接下来，就一起探寻下 Live Template 是如何影响程序狗的日
-          ...
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/02/17/intellij-live-template/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
+        <p>相信Java码农们大多都有过反复敲写这段代码的心酸经历：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"Hello World"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不过，这种糟心的状况在各位接触IDE工具以后得到了较好改善。的确现在只需输入<code>psvm</code>、<code>sout</code>等提示性关键字，再按下<code>TAB</code>键，便能在短短几秒内自动生成上述代码段。是不是觉得黑科技感十足？接下来，就一起探寻下 <strong>Live Template</strong> 是如何影响程序狗的日常工作哒。</p>
+<h1 id="初识神器"><a href="#初识神器" class="headerlink" title="初识神器"></a>初识神器</h1><p>首先打开菜单 <strong>File -&gt; Settings</strong>，然后找到 <strong>Editor</strong> 目录下的 <strong>Live Template</strong> 子项，便可找到<code>psvm</code>、<code>sout</code>等关键字的代码模板定义。是不是发现也没想象中的那么神秘 ⊙▂⊙</p>
+<p><img src="/images/settings-live-template.jpg" alt="Live Template"></p>
+<p>任意点选其中一项，不难注意到以下几个关键信息：</p>
+<ul>
+<li><code>Abbreviation</code>表示模板缩略关键字（或称“缩写”），与<code>psvm</code>、<code>sout</code>作用等同</li>
+<li><code>Description</code>用于编写对该项模板的详细描述内容，方便日后检索识别</li>
+<li><code>Template text</code>用于编写代码模板</li>
+</ul>
+<h1 id="实例挑战"><a href="#实例挑战" class="headerlink" title="实例挑战"></a>实例挑战</h1><p>由于IDEA将缩写词<code>log</code>默认定义为如下形式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger logger = Logger.getLogger($CLASS$.class)</span><br></pre></td></tr></table></figure>
+<p>如果直接使用它，IDE通常会尝试导入标准库<code>java.util.logging</code>中的Logger类。但在大多数应用场景下，Slf4j+Logback这类框架组合还是要更为流行一些。这时如果再沿用这段代码模板，将让努力变成徒劳。那么问题就来了，如何对模板进行改造才好使呢？</p>
+<h2 id="预定义变量"><a href="#预定义变量" class="headerlink" title="预定义变量"></a>预定义变量</h2><p>代码模板中使用到的预定义变量（以美元符号夹在中间的形式表现出来），都不是凭空创造出来的，而是在下图所示的地方自行定义滴：</p>
+<p><img src="/images/live-template-variables.jpg" alt="Live Template Variables"></p>
+<p>其中，</p>
+<ul>
+<li><code>Name</code>代表模板变量名称，例如：这里定义为<strong>CLASS_NAME</strong></li>
+<li><code>Expression</code>代表模板变量与之对应的<a href="https://www.jetbrains.com/help/idea/2016.2/live-template-variables.html" target="_blank" rel="noopener">取值表达式</a>，例如：通过<strong>className()</strong>获取当前文件的完整类名</li>
+<li><code>Default value</code>代表模板变量的默认值，它会在<strong>取值表达式</strong>为空时生效</li>
+</ul>
+<h2 id="动态模板"><a href="#动态模板" class="headerlink" title="动态模板"></a>动态模板</h2><p>紧接着引用上述的<code>$CLASS_NAME$</code>模板变量，根据实际采用的日志框架可将模板内容修改为：</p>
+<ul>
+<li><strong>Slf4j</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> org.slf4j.Logger LOGGER = org.slf4j.LoggerFactory.getLogger($CLASS_NAME$.class);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>Log4j</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger($CLASS_NAME$.class);</span><br></pre></td></tr></table></figure>
+<p>至此，自定义代码模板的操作方法阐述完毕，赶紧亲自动手尝试下吧！</p>
+<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><ul>
+<li><a href="https://agileek.github.io/intellij/java/2015/03/01/intellij-live-template-log/" target="_blank" rel="noopener">Generate log line with Intellij and live templates</a></li>
+<li><a href="https://stackoverflow.com/questions/6097646/intellij-live-template" target="_blank" rel="noopener">Stack OverFlow: Intellij Live Template</a></li>
+</ul>
+
+        所有文章非特别说明皆为原创。技术更迭迅猛，部分内容可能会作修改，为保证信息与源同步，转载时请务必注明文章出处！谢谢合作 :-)
       
     </div>
 
     <div>
       
+        
+
+      
     </div>
 
     <div>
+      
+        
+
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/02/12/mapstruct-intro/" itemprop="url">
-                  MapStruct进阶踩坑指南
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-02-12T13:06:36+08:00" content="2018-02-12">
-              2018-02-12
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-
-          <!-- 
-            
-           -->
-
+            <a href="/tags/Java/" rel="tag">#Java</a>
           
-
+            <a href="/tags/Intellij-IDEA/" rel="tag">#Intellij IDEA</a>
           
-          
-
+            <a href="/tags/Live-Template/" rel="tag">#Live Template</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-          虽然CGLIB等基于运行时代码生成（Byte Code Generation at Runtime）的解决方案相比BeanUtils此类反射系框架具有显著的性能优势，但在某些应用场景下（比如：使用Converter进行定制转换时），还是不能忽视它与手动拷贝（Getter/Setter方法）之间的性能差距。
-近期出炉的一份评测报告显示，MapStruct因采用了编译时生成代码（Compile-Time Code Generator）的特殊策略，最终获得了近乎媲美手动拷贝的跑分结果，是CGLIB B
-          ...
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/02/12/mapstruct-intro/" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/12/mapstruct-intro/" rel="next" title="MapStruct进阶踩坑指南">
+                <i class="fa fa-chevron-left"></i> MapStruct进阶踩坑指南
+              </a>
+            
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/30/cglib-beancopier/" itemprop="url">
-                  CGLIB BeanCopier实现高效拷贝的方法总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-01-30T20:00:00+08:00" content="2018-01-30">
-              2018-01-30
-            </time>
-          </span>
-
-          
-
-          <!-- 
-            
-           -->
-
-          
-
-          
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-          
-CGLIB（Byte Code Generation Library）作为一个强大的Java代码生成工具库，实现了对ASM字节码工具的封装与操作简化，可在运行期动态扩展类和实现接口。
-
-由于业务系统分层设计的缘故，经常会遇到PO/BO/VO/DTO等领域对象之间的相互转换，实现各层模型间的信息交换。根据有关博文的评测结果，CGLIB BeanCopier在多数应用场景下具有明显优于DozerMapper、Apache BeanUtils等工具的转换性能，因此决心对其功能点探索一波。
-基本功能B
-          ...
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/01/30/cglib-beancopier/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
           
           </div>
@@ -524,6 +399,10 @@ CGLIB（Byte Code Generation Library）作为一个强大的Java代码生成工�
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -543,8 +422,17 @@ CGLIB（Byte Code Generation Library）作为一个强大的Java代码生成工�
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.jpg"
@@ -620,6 +508,17 @@ CGLIB（Byte Code Generation Library）作为一个强大的Java代码生成工�
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#初识神器"><span class="nav-number">1.</span> <span class="nav-text">初识神器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实例挑战"><span class="nav-number">2.</span> <span class="nav-text">实例挑战</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#预定义变量"><span class="nav-number">2.1.</span> <span class="nav-text">预定义变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态模板"><span class="nav-number">2.2.</span> <span class="nav-text">动态模板</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文章"><span class="nav-number">3.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -724,6 +623,10 @@ CGLIB（Byte Code Generation Library）作为一个强大的Java代码生成工�
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

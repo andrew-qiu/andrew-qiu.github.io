@@ -42,7 +42,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Java," />
+  <meta name="keywords" content="Java,Bean,ASM," />
 
 
 
@@ -61,14 +61,14 @@
 
 
 <meta name="description" content="CGLIB（Byte Code Generation Library）作为一个强大的Java代码生成工具库，实现了对ASM字节码工具的封装与操作简化，可在运行期动态扩展类和实现接口。  由于业务系统分层设计的缘故，经常会遇到PO/BO/VO/DTO等领域对象之间的相互转换，实现各层模型间的信息交换。根据有关博文的评测结果，CGLIB BeanCopier在多数应用场景下具有明显优于DozerMa">
-<meta name="keywords" content="Java">
+<meta name="keywords" content="Java,Bean,ASM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CGLIB BeanCopier实现高效拷贝的方法总结">
 <meta property="og:url" content="http://focalab.com/2018/01/30/cglib-beancopier/index.html">
 <meta property="og:site_name" content="Focal LAB">
 <meta property="og:description" content="CGLIB（Byte Code Generation Library）作为一个强大的Java代码生成工具库，实现了对ASM字节码工具的封装与操作简化，可在运行期动态扩展类和实现接口。  由于业务系统分层设计的缘故，经常会遇到PO/BO/VO/DTO等领域对象之间的相互转换，实现各层模型间的信息交换。根据有关博文的评测结果，CGLIB BeanCopier在多数应用场景下具有明显优于DozerMa">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-12T04:47:07.296Z">
+<meta property="og:updated_time" content="2018-02-17T06:03:01.959Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CGLIB BeanCopier实现高效拷贝的方法总结">
 <meta name="twitter:description" content="CGLIB（Byte Code Generation Library）作为一个强大的Java代码生成工具库，实现了对ASM字节码工具的封装与操作简化，可在运行期动态扩展类和实现接口。  由于业务系统分层设计的缘故，经常会遇到PO/BO/VO/DTO等领域对象之间的相互转换，实现各层模型间的信息交换。根据有关博文的评测结果，CGLIB BeanCopier在多数应用场景下具有明显优于DozerMa">
@@ -137,7 +137,7 @@
       <span class="logo-line-after"><i></i></span>
     </div>
   </div>
-  <p class="site-subtitle">Having nothing to do, but FIGHTING</p>
+  <p class="site-subtitle">Having nothing to do, but CODING</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -208,6 +208,10 @@
       <div class="tags">
       
         <a href="/tags/Java/" rel="tag" title="Java">Java</a>
+      
+        <a href="/tags/Bean/" rel="tag" title="Bean">Bean</a>
+      
+        <a href="/tags/ASM/" rel="tag" title="ASM">ASM</a>
       
       </div>
       <h1>CGLIB BeanCopier实现高效拷贝的方法总结</h1>
@@ -302,7 +306,7 @@
 <li>如果useConverter等于<code>true</code>，可对某些特定属性值进行定制化转换，比如：四舍五入等操作</li>
 </ul>
 <p>下面针对以上两种模式分别举例说明用法：</p>
-<h2 id="Converter关闭模式"><a href="#Converter关闭模式" class="headerlink" title="Converter关闭模式"></a>Converter关闭模式</h2><p>编写<a href="https://gist.github.com/andrew-qiu/64de481b1305d5f48c7fc22ef58625d6#file-payorderentity-java" target="_blank" rel="noopener">PayOrderEntity</a>和<a href="https://gist.github.com/andrew-qiu/64de481b1305d5f48c7fc22ef58625d6#file-loanapplydto-java" target="_blank" rel="noopener">LoanApplyDto</a>两个测试类，确保两者均生成了字段对应的<code>Getter</code>、<code>Setter</code>方法，否则会导致拷贝失败。</p>
+<h2 id="Converter关闭模式"><a href="#Converter关闭模式" class="headerlink" title="Converter关闭模式"></a>Converter关闭模式</h2><p>准备<a href="https://gist.github.com/andrew-qiu/64de481b1305d5f48c7fc22ef58625d6#file-payorderentity-java" target="_blank" rel="noopener">PayOrderEntity</a>和<a href="https://gist.github.com/andrew-qiu/64de481b1305d5f48c7fc22ef58625d6#file-loanapplydto-java" target="_blank" rel="noopener">LoanApplyDto</a>两个测试类，确保两者均生成了字段对应的<code>Getter</code>、<code>Setter</code>方法，否则会导致拷贝失败。</p>
 <ul>
 <li>首先将PayOrderEntity实例化成源对象，并对各字段赋值：</li>
 </ul>
@@ -478,9 +482,27 @@
           
             <a href="/tags/Java/" rel="tag">#Java</a>
           
+            <a href="/tags/Bean/" rel="tag">#Bean</a>
+          
+            <a href="/tags/ASM/" rel="tag">#ASM</a>
+          
         </div>
       
 
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/12/mapstruct-intro/" rel="prev" title="MapStruct进阶踩坑指南">
+                MapStruct进阶踩坑指南 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
 
       
@@ -538,14 +560,14 @@
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.jpg"
-               alt="馒头君" />
-          <p class="site-author-name" itemprop="name">馒头君</p>
+               alt="帅呆了的馒头君" />
+          <p class="site-author-name" itemprop="name">帅呆了的馒头君</p>
           <p class="site-description motion-element" itemprop="description">热衷于搞些技术尝鲜</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -555,7 +577,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签云</span>
               </a>
             </div>
@@ -640,7 +662,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">馒头君</span>
+  <span class="author" itemprop="copyrightHolder">帅呆了的馒头君</span>
 </div>
 
 <div class="powered-by">
