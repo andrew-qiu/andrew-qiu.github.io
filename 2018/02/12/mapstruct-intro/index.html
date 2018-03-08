@@ -18,6 +18,8 @@
 
 
 
+  <meta name="google-site-verification" content="true" />
+
 
 
 
@@ -29,7 +31,9 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -37,7 +41,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
@@ -60,18 +66,18 @@
 
 
 
-<meta name="description" content="虽然CGLIB等基于运行时代码生成（Byte Code Generation at Runtime）的解决方案相比BeanUtils此类反射系框架具有显著的性能优势，但在某些应用场景下（比如：使用Converter进行定制转换时），还是不能忽视它与手动拷贝（Getter/Setter方法）之间的性能差距。 近期出炉的一份评测报告显示，MapStruct因采用了编译时生成代码（Compile-Tim">
+<meta name="description" content="虽然CGLIB等基于运行时代码生成的解决方案相比Apache BeanUtils等反射类框架具有明显的性能优势，但在某些应用场景下，比如：利用Converter接口实现定制化Bean转换，还是与Getter/Setter的手工拷贝形式存在性能差距。 A. Rey近期做过的一份O2O Mapping框架评测报告显示，MapStruct由于采用了编译时生成代码（Compile-Time Code Ge">
 <meta name="keywords" content="Java,Bean,Maven,Gradle">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MapStruct进阶踩坑指南">
 <meta property="og:url" content="http://focalab.com/2018/02/12/mapstruct-intro/index.html">
 <meta property="og:site_name" content="Focal LAB">
-<meta property="og:description" content="虽然CGLIB等基于运行时代码生成（Byte Code Generation at Runtime）的解决方案相比BeanUtils此类反射系框架具有显著的性能优势，但在某些应用场景下（比如：使用Converter进行定制转换时），还是不能忽视它与手动拷贝（Getter/Setter方法）之间的性能差距。 近期出炉的一份评测报告显示，MapStruct因采用了编译时生成代码（Compile-Tim">
+<meta property="og:description" content="虽然CGLIB等基于运行时代码生成的解决方案相比Apache BeanUtils等反射类框架具有明显的性能优势，但在某些应用场景下，比如：利用Converter接口实现定制化Bean转换，还是与Getter/Setter的手工拷贝形式存在性能差距。 A. Rey近期做过的一份O2O Mapping框架评测报告显示，MapStruct由于采用了编译时生成代码（Compile-Time Code Ge">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-17T06:03:34.995Z">
+<meta property="og:updated_time" content="2018-02-26T13:01:53.098Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MapStruct进阶踩坑指南">
-<meta name="twitter:description" content="虽然CGLIB等基于运行时代码生成（Byte Code Generation at Runtime）的解决方案相比BeanUtils此类反射系框架具有显著的性能优势，但在某些应用场景下（比如：使用Converter进行定制转换时），还是不能忽视它与手动拷贝（Getter/Setter方法）之间的性能差距。 近期出炉的一份评测报告显示，MapStruct因采用了编译时生成代码（Compile-Tim">
+<meta name="twitter:description" content="虽然CGLIB等基于运行时代码生成的解决方案相比Apache BeanUtils等反射类框架具有明显的性能优势，但在某些应用场景下，比如：利用Converter接口实现定制化Bean转换，还是与Getter/Setter的手工拷贝形式存在性能差距。 A. Rey近期做过的一份O2O Mapping框架评测报告显示，MapStruct由于采用了编译时生成代码（Compile-Time Code Ge">
 
 
 
@@ -137,7 +143,7 @@
       <span class="logo-line-after"><i></i></span>
     </div>
   </div>
-  <p class="site-subtitle">Having nothing to do, but CODING</p>
+  <p class="site-subtitle">Focus on your potential instead of your limitations</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -274,6 +280,25 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           <!-- 
             
@@ -296,14 +321,14 @@
       
 
       
-        <p>虽然<a href="https://github.com/cglib/cglib" target="_blank" rel="noopener">CGLIB</a>等基于运行时代码生成（Byte Code Generation at Runtime）的解决方案相比BeanUtils此类反射系框架具有显著的性能优势，但在某些应用场景下（比如：使用Converter进行定制转换时），还是不能忽视它与手动拷贝（Getter/Setter方法）之间的性能差距。</p>
-<p>近期出炉的<a href="https://github.com/arey/java-object-mapper-benchmark" target="_blank" rel="noopener">一份评测报告</a>显示，MapStruct因采用了编译时生成代码（Compile-Time Code Generator）的特殊策略，最终获得了近乎媲美手动拷贝的跑分结果，是CGLIB BeanXXX工具包的理想升级/替代品。</p>
+        <p>虽然<a href="https://github.com/cglib/cglib" target="_blank" rel="noopener">CGLIB</a>等基于运行时代码生成的解决方案相比Apache BeanUtils等反射类框架具有明显的性能优势，但在某些应用场景下，比如：利用Converter接口实现定制化Bean转换，还是与Getter/Setter的手工拷贝形式存在性能差距。</p>
+<p>A. Rey近期做过的一份<a href="https://github.com/arey/java-object-mapper-benchmark" target="_blank" rel="noopener">O2O Mapping框架评测报告</a>显示，MapStruct由于采用了编译时生成代码（Compile-Time Code Generator）的处理方案，使其最终获得了媲美纯手工拷贝的性能得分。而它注解式的编码风格、以及强大的<a href="http://mapstruct.org/documentation/ide-support/" target="_blank" rel="noopener">IDE外围插件支持</a>，让博主有了兴趣尝试一番。</p>
 <h1 id="依赖安装"><a href="#依赖安装" class="headerlink" title="依赖安装"></a>依赖安装</h1><blockquote>
 <p>由于MapStruct<a href="http://mapstruct.org/documentation/installation/" target="_blank" rel="noopener">官方安装指导</a>坑到无底线，所以根据实战经验重新整理了一波安装步骤，避免大家再次掉进去。</p>
 </blockquote>
 <p>首先，务必在编译生命周期内引入Mapstruct Processor，以保证<code>@Mapper</code>、<code>@Mapping</code>等注解能被正确识别、处理：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.5.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">annotationProcessorPaths</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">path</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mapstruct<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mapstruct-processor<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;org.mapstruct.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">annotationProcessorPaths</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>然后，根据实际需求设置JDK版本、并正确引入对应依赖包：</p>
+<p>然后，根据实际情况选择引入JDK版本对应的依赖包：</p>
 <ul>
 <li>JDK1.8+（强烈推荐）</li>
 </ul>
@@ -312,13 +337,136 @@
 <li>JDK1.6/JDK1.7</li>
 </ul>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>1.6<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span>    <span class="comment">&lt;!-- Sepecify JDK Version, depending on your project --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">org.mapstruct.version</span>&gt;</span>1.2.0.Final<span class="tag">&lt;/<span class="name">org.mapstruct.version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">...</span><br><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mapstruct<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mapstruct<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;org.mapstruct.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mapstruct<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mapstruct-processor<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;org.mapstruct.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h1 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h1><p>准备<a href="https://gist.github.com/andrew-qiu/64de481b1305d5f48c7fc22ef58625d6#file-payorderentity-java" target="_blank" rel="noopener">PayOrderEntity</a>和<a href="https://gist.github.com/andrew-qiu/64de481b1305d5f48c7fc22ef58625d6#file-loanapplydto-java" target="_blank" rel="noopener">LoanApplyDto</a>两个测试类，确保两者均生成了字段对应的<code>Getter</code>、<code>Setter</code>方法，否则会导致拷贝失败。</p>
-<h1 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Mapper</span>(componentModel = <span class="string">"spring"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">TradeInfoMapper</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith</span>(SpringRunner.class)</span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TradeInfoMapperTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> TradeInfoDefaultMapper tradeInfoMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">componentModel</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        PayOrderEntity source = <span class="keyword">new</span> PayOrderEntity();</span><br><span class="line">        source.setOrderNo(<span class="string">"PAY20170810120512"</span>);</span><br><span class="line">        source.setPayAmount(<span class="keyword">new</span> BigDecimal(<span class="string">"300.00"</span>));</span><br><span class="line">        source.setReduceAmount(<span class="keyword">new</span> BigDecimal(<span class="string">"10.00"</span>));</span><br><span class="line"></span><br><span class="line">        LoanApplyDto target =  tradeInfoDefaultMapper.tradeInfoTrans(source);</span><br><span class="line">        System.out.println(target);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="同名字段的自动映射"><a href="#同名字段的自动映射" class="headerlink" title="同名字段的自动映射"></a>同名字段的自动映射</h1><blockquote>
+<p>准备<a href="https://gist.github.com/andrew-qiu/64de481b1305d5f48c7fc22ef58625d6#file-payorderentity-java" target="_blank" rel="noopener">PayOrderEntity</a>和<a href="https://gist.github.com/andrew-qiu/64de481b1305d5f48c7fc22ef58625d6#file-loanapplydto-java" target="_blank" rel="noopener">LoanApplyDto</a>两个测试类，确保两者均生成了字段对应的<code>Getter</code>、<code>Setter</code>方法，否则会导致拷贝失败。</p>
+</blockquote>
+<p>编写带有<code>@Mapper</code>注解的一个映射接口和对应抽象方法，标记转换关系是由PayOrderEntity映射到LoanApplyDto的。这里要特别注意，MyBatis中也存在<code>@Mapper</code>同名注解，导入包路径时不要搞错了！</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.mapstruct.Mapper;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">TradeInfoMapper</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    TradeInfoMapper INSTANCE = Mappers.getMapper(TradeInfoMapper.class);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Mapping JavaBean: PayOrderEntity --&gt; LoanApplyDto</span></span><br><span class="line">    <span class="function">LoanApplyDto <span class="title">tradeInfoTrans</span><span class="params">(PayOrderEntity payOrderEntity)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Mapstruct Processor能够在编译阶段实现这类接口，自动对同名字段适用恰当的（隐式）<a href="http://mapstruct.org/documentation/stable/reference/html/#datatype-conversions" target="_blank" rel="noopener">转换关系</a>。这样，便可在调用方引用接口中声明的（静态）成员变量<code>INSTANCE</code>和<code>tradeInfoTrans</code>方法实施转换，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PayOrderEntity source = <span class="keyword">new</span> PayOrderEntity();</span><br><span class="line">source.setOrderNo(<span class="string">"PAY20170810120512"</span>);</span><br><span class="line">source.setPayAmount(<span class="keyword">new</span> BigDecimal(<span class="string">"300.00"</span>));</span><br><span class="line">source.setReduceAmount(<span class="keyword">new</span> BigDecimal(<span class="string">"10.00"</span>));</span><br><span class="line"></span><br><span class="line">LoanApplyDto target = TradeInfoDefaultMapper.INSTANCE.tradeInfoTrans(source);</span><br></pre></td></tr></table></figure>
+<p>执行结果：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字段名</th>
+<th style="text-align:center">源对象</th>
+<th style="text-align:center">目标对象</th>
+<th style="text-align:center">字段类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">orderNo</td>
+<td style="text-align:center">PAY20170810120512</td>
+<td style="text-align:center">PAY20170810120512</td>
+<td style="text-align:center">同名字段，显式转换</td>
+</tr>
+<tr>
+<td style="text-align:center">payAmount</td>
+<td style="text-align:center">300.00</td>
+<td style="text-align:center">300.00</td>
+<td style="text-align:center">同名字段，显式转换</td>
+</tr>
+<tr>
+<td style="text-align:center">reduceAmount</td>
+<td style="text-align:center">10.00</td>
+<td style="text-align:center">10.00</td>
+<td style="text-align:center">同名字段，隐式转换</td>
+</tr>
+<tr>
+<td style="text-align:center">remark</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">null</td>
+<td style="text-align:center">非同名字段，不转换</td>
+</tr>
+</tbody>
+</table>
+<h1 id="定制转换方法"><a href="#定制转换方法" class="headerlink" title="定制转换方法"></a>定制转换方法</h1><p>MapStruct具备非常强大的同名字段映射能力，能够较为合理地处理不同类型间的转换诉求。与此同时，它针对非同名字段转换、字段值修改等个性化诉求也提供了一套定制手段。</p>
+<h2 id="非同名字段映射转换"><a href="#非同名字段映射转换" class="headerlink" title="非同名字段映射转换"></a>非同名字段映射转换</h2><p>接上节，假设我们不使用自动映射、而采用手工指定的策略时，可以引入<code>@Mappings</code>或<code>@Mapping</code>注解来指定源/目标字段的具体映射关系：</p>
+<h3 id="单个字段"><a href="#单个字段" class="headerlink" title="单个字段"></a>单个字段</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.mapstruct.Mapper;</span><br><span class="line"><span class="keyword">import</span> org.mapstruct.Mapping;</span><br><span class="line"><span class="keyword">import</span> org.mapstruct.Mappings;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">TradeInfoMapper</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    TradeInfoMapper INSTANCE = Mappers.getMapper(TradeInfoMapper.class);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Mapping</span>(source = <span class="string">"orderNo"</span>, target = <span class="string">"remark"</span>)</span><br><span class="line">    <span class="function">LoanApplyDto <span class="title">tradeInfoTrans</span><span class="params">(PayOrderEntity payOrderEntity)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>预期结果：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字段名</th>
+<th style="text-align:center">源对象</th>
+<th style="text-align:center">目标对象</th>
+<th style="text-align:center">字段类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">orderNo</td>
+<td style="text-align:center">PAY20170810120512</td>
+<td style="text-align:center">PAY20170810120512</td>
+<td style="text-align:center">同名字段，显式转换</td>
+</tr>
+<tr>
+<td style="text-align:center">payAmount</td>
+<td style="text-align:center">300.00</td>
+<td style="text-align:center">300.00</td>
+<td style="text-align:center">同名字段，显式转换</td>
+</tr>
+<tr>
+<td style="text-align:center">reduceAmount</td>
+<td style="text-align:center">10.00</td>
+<td style="text-align:center">10.00</td>
+<td style="text-align:center">同名字段，隐式转换</td>
+</tr>
+<tr>
+<td style="text-align:center">remark</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">PAY20170810120512</td>
+<td style="text-align:center">指定映射关系</td>
+</tr>
+</tbody>
+</table>
+<h3 id="多个字段"><a href="#多个字段" class="headerlink" title="多个字段"></a>多个字段</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.mapstruct.Mapper;</span><br><span class="line"><span class="keyword">import</span> org.mapstruct.Mapping;</span><br><span class="line"><span class="keyword">import</span> org.mapstruct.Mappings;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">TradeInfoMapper</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    TradeInfoMapper INSTANCE = Mappers.getMapper(TradeInfoMapper.class);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Mappings</span>(&#123;</span><br><span class="line">        <span class="meta">@Mapping</span>(source = <span class="string">"reduceAmount"</span>, target = <span class="string">"payAmount"</span>),</span><br><span class="line">        <span class="meta">@Mapping</span>(source = <span class="string">"payAmount"</span>, target = <span class="string">"reduceAmount"</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="function">LoanApplyDto <span class="title">tradeInfoTrans</span><span class="params">(PayOrderEntity payOrderEntity)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>预期结果：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字段名</th>
+<th style="text-align:center">源对象</th>
+<th style="text-align:center">目标对象</th>
+<th style="text-align:center">字段类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">orderNo</td>
+<td style="text-align:center">PAY20170810120512</td>
+<td style="text-align:center">PAY20170810120512</td>
+<td style="text-align:center">同名字段，显式转换</td>
+</tr>
+<tr>
+<td style="text-align:center">payAmount</td>
+<td style="text-align:center">300.00</td>
+<td style="text-align:center">10.00</td>
+<td style="text-align:center">同名字段，但指定映射关系</td>
+</tr>
+<tr>
+<td style="text-align:center">reduceAmount</td>
+<td style="text-align:center">10.00</td>
+<td style="text-align:center">300.00</td>
+<td style="text-align:center">同名字段，但指定映射关系</td>
+</tr>
+<tr>
+<td style="text-align:center">remark</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">null</td>
+<td style="text-align:center">非同名字段，且未指定映射关系</td>
+</tr>
+</tbody>
+</table>
+<h3 id="特殊逻辑定制"><a href="#特殊逻辑定制" class="headerlink" title="特殊逻辑定制"></a>特殊逻辑定制</h3><p>如果要实现字段转换中的一些特殊逻辑，比如：折扣金额（reduceAmount）要根据下单金额（payAmount）的0.1倍计算而来，就要用到默认方法（Java8+）、或抽象类方法来实现。具体可参考<a href="http://mapstruct.org/documentation/stable/reference/html/#adding-custom-methods" target="_blank" rel="noopener">官方手册：增加定制方法</a>章节，这里就不再赘述。</p>
+<h1 id="Mapper实例获取"><a href="#Mapper实例获取" class="headerlink" title="Mapper实例获取"></a>Mapper实例获取</h1><p>前面我们都是从<code>getMapper()</code>方法获取的Mapper实例，虽然具备单例、线程安全等诸多优点，但还是与Spring Framework、CDI这类依赖注入框架的使用习惯相背离。因此，MapStruct现在也加强了对它们的支持力度。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Mapper</span>(componentModel = <span class="string">"spring"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">TradeInfoMapper</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Mapping JavaBean: PayOrderEntity --&gt; LoanApplyDto</span></span><br><span class="line">    <span class="function">LoanApplyDto <span class="title">tradeInfoTrans</span><span class="params">(PayOrderEntity payOrderEntity)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>便省去了声明<code>INSTANCE</code>成员变量的相关语句，仅仅依靠<code>@Resource</code>、<code>@Autowired</code>、<code>@Inject</code>这类JSR规范注解就能被加载到。当然前提是依赖注入框架支持这类注解使用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith</span>(SpringRunner.class)</span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TradeInfoMapperTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> TradeInfoMapper tradeInfoMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">componentModel</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        PayOrderEntity source = <span class="keyword">new</span> PayOrderEntity();</span><br><span class="line">        source.setOrderNo(<span class="string">"PAY20170810120512"</span>);</span><br><span class="line">        source.setPayAmount(<span class="keyword">new</span> BigDecimal(<span class="string">"300.00"</span>));</span><br><span class="line">        source.setReduceAmount(<span class="keyword">new</span> BigDecimal(<span class="string">"10.00"</span>));</span><br><span class="line"></span><br><span class="line">        LoanApplyDto target =  tradeInfoMapper.tradeInfoTrans(source);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><ul>
 <li><a href="http://mapstruct.org/documentation/stable/reference/html/" target="_blank" rel="noopener">MapStruct Reference Guide</a></li>
 <li><a href="https://github.com/mapstruct/mapstruct-examples" target="_blank" rel="noopener">MapStruct Examples</a></li>
-<li><a href="http://mapstruct.org/documentation/ide-support/" target="_blank" rel="noopener">MapStruct IDE插件汇总</a></li>
 </ul>
 
         所有文章非特别说明皆为原创。技术更迭迅猛，部分内容可能会作修改，为保证信息与源同步，转载时请务必注明文章出处！谢谢合作 :-)
@@ -436,17 +584,24 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
 
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签云</span>
               </a>
             </div>
@@ -508,7 +663,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#依赖安装"><span class="nav-number">1.</span> <span class="nav-text">依赖安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本用法"><span class="nav-number">2.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#依赖注入"><span class="nav-number">3.</span> <span class="nav-text">依赖注入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文章"><span class="nav-number">4.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#依赖安装"><span class="nav-number">1.</span> <span class="nav-text">依赖安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#同名字段的自动映射"><span class="nav-number">2.</span> <span class="nav-text">同名字段的自动映射</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定制转换方法"><span class="nav-number">3.</span> <span class="nav-text">定制转换方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#非同名字段映射转换"><span class="nav-number">3.1.</span> <span class="nav-text">非同名字段映射转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单个字段"><span class="nav-number">3.1.1.</span> <span class="nav-text">单个字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多个字段"><span class="nav-number">3.1.2.</span> <span class="nav-text">多个字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊逻辑定制"><span class="nav-number">3.1.3.</span> <span class="nav-text">特殊逻辑定制</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mapper实例获取"><span class="nav-number">4.</span> <span class="nav-text">Mapper实例获取</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文章"><span class="nav-number">5.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
             
           </div>
         </section>
@@ -526,7 +681,7 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2017 - 
   <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -578,22 +733,22 @@
 
 
   
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
 
   
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
 
   
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
 
   
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.3.1/velocity.min.js"></script>
 
   
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.3.1/velocity.ui.min.js"></script>
 
   
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
 
 
   
@@ -662,10 +817,10 @@
     <script type='text/javascript'>
         (function() {
             var id = window.location.pathname.replace(/(\/$)/g, '');
-            var owner = 'BearD01001';
-            var repo = 'beard01001.github.io';
-            var clientId = '7e6796bf4bd74a25333f';
-            var clientSecret = 'd190223868b2175fbce4094e6485195cef7d3e8a';
+            var owner = 'andrew-qiu';
+            var repo = 'andrew-qiu.github.io';
+            var clientId = '5a2d82dddb655b086213';
+            var clientSecret = '3e736118181b579b8849e31f582eba4dc0faf729';
 
             var gitment = new Gitment({
                 id: id,

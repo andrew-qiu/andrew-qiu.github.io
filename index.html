@@ -18,6 +18,8 @@
 
 
 
+  <meta name="google-site-verification" content="true" />
+
 
 
 
@@ -29,7 +31,9 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -37,12 +41,14 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Focal Lab, NexTD" />
+  <meta name="keywords" content="Focal Lab" />
 
 
 
@@ -137,7 +143,7 @@
       <span class="logo-line-after"><i></i></span>
     </div>
   </div>
-  <p class="site-subtitle">Having nothing to do, but CODING</p>
+  <p class="site-subtitle">Focus on your potential instead of your limitations</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -234,6 +240,123 @@
             
               
                 
+                <a class="post-title-link" href="/2018/02/23/spring-boot-env-profile/" itemprop="url">
+                  Spring Boot多环境配置资源装载方案
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-02-23T21:39:42+08:00" content="2018-02-23">
+              2018-02-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          <!-- 
+            
+           -->
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/02/23/spring-boot-env-profile/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/02/17/intellij-live-template/" itemprop="url">
                   Intellij IDEA自定义代码模板
                 </a>
@@ -253,6 +376,25 @@
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Misc/" itemprop="url" rel="index">
+                    <span itemprop="name">Misc</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           <!-- 
@@ -354,6 +496,25 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           <!-- 
             
@@ -378,8 +539,8 @@
       
         
           
-          虽然CGLIB等基于运行时代码生成（Byte Code Generation at Runtime）的解决方案相比BeanUtils此类反射系框架具有显著的性能优势，但在某些应用场景下（比如：使用Converter进行定制转换时），还是不能忽视它与手动拷贝（Getter/Setter方法）之间的性能差距。
-近期出炉的一份评测报告显示，MapStruct因采用了编译时生成代码（Compile-Time Code Generator）的特殊策略，最终获得了近乎媲美手动拷贝的跑分结果，是CGLIB B
+          虽然CGLIB等基于运行时代码生成的解决方案相比Apache BeanUtils等反射类框架具有明显的性能优势，但在某些应用场景下，比如：利用Converter接口实现定制化Bean转换，还是与Getter/Setter的手工拷贝形式存在性能差距。
+A. Rey近期做过的一份O2O Mapping框架评测报告显示，MapStruct由于采用了编译时生成代码（Compile-Time Code Generator）的处理方案，使其最终获得了媲美纯手工拷贝的性能得分。而它注解式的编码风格、以及强大的
           ...
           <div class="post-more-link text-center">
             <a class="btn" href="/2018/02/12/mapstruct-intro/" rel="contents">
@@ -452,6 +613,25 @@
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           <!-- 
@@ -555,17 +735,24 @@ CGLIB（Byte Code Generation Library）作为一个强大的Java代码生成工�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
 
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签云</span>
               </a>
             </div>
@@ -634,7 +821,7 @@ CGLIB（Byte Code Generation Library）作为一个强大的Java代码生成工�
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2017 - 
   <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -686,22 +873,22 @@ CGLIB（Byte Code Generation Library）作为一个强大的Java代码生成工�
 
 
   
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
 
   
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
 
   
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
 
   
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.3.1/velocity.min.js"></script>
 
   
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.3.1/velocity.ui.min.js"></script>
 
   
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
 
 
   
@@ -766,10 +953,10 @@ CGLIB（Byte Code Generation Library）作为一个强大的Java代码生成工�
     <script type='text/javascript'>
         (function() {
             var id = window.location.pathname.replace(/(\/$)/g, '');
-            var owner = 'BearD01001';
-            var repo = 'beard01001.github.io';
-            var clientId = '7e6796bf4bd74a25333f';
-            var clientSecret = 'd190223868b2175fbce4094e6485195cef7d3e8a';
+            var owner = 'andrew-qiu';
+            var repo = 'andrew-qiu.github.io';
+            var clientId = '5a2d82dddb655b086213';
+            var clientSecret = '3e736118181b579b8849e31f582eba4dc0faf729';
 
             var gitment = new Gitment({
                 id: id,
