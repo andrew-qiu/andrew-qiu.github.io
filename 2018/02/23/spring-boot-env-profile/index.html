@@ -66,18 +66,20 @@
 
 
 
-<meta name="description" content="热衷于搞些技术尝鲜">
+<meta name="description" content="Spring Boot配置文件除了存在公有部分外，还可根据不同环境作差异化区分。例如：通过指定spring.profiles.active来设置哪些Profiles将被激活    字段名 用途     applcation.yml 与环境无关的配置   application-dev.yml 开发环境   application-beta.yml 测试环境   application-prod.y">
 <meta name="keywords" content="Spring Boot,Profile,YAML">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring Boot多环境配置资源装载方案">
 <meta property="og:url" content="http://focalab.com/2018/02/23/spring-boot-env-profile/index.html">
 <meta property="og:site_name" content="Focal LAB">
-<meta property="og:description" content="热衷于搞些技术尝鲜">
+<meta property="og:description" content="Spring Boot配置文件除了存在公有部分外，还可根据不同环境作差异化区分。例如：通过指定spring.profiles.active来设置哪些Profiles将被激活    字段名 用途     applcation.yml 与环境无关的配置   application-dev.yml 开发环境   application-beta.yml 测试环境   application-prod.y">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-26T13:01:53.155Z">
+<meta property="og:image" content="http://focalab.com/2018/02/23/spring-boot-env-profile/spring_boot_dir.png">
+<meta property="og:updated_time" content="2018-03-12T12:56:23.960Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring Boot多环境配置资源装载方案">
-<meta name="twitter:description" content="热衷于搞些技术尝鲜">
+<meta name="twitter:description" content="Spring Boot配置文件除了存在公有部分外，还可根据不同环境作差异化区分。例如：通过指定spring.profiles.active来设置哪些Profiles将被激活    字段名 用途     applcation.yml 与环境无关的配置   application-dev.yml 开发环境   application-beta.yml 测试环境   application-prod.y">
+<meta name="twitter:image" content="http://focalab.com/2018/02/23/spring-boot-env-profile/spring_boot_dir.png">
 
 
 
@@ -319,7 +321,57 @@
       
 
       
-        
+        <p>Spring Boot配置文件除了存在公有部分外，还可根据不同环境作差异化区分。例如：通过指定<code>spring.profiles.active</code>来设置哪些Profiles将被激活</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字段名</th>
+<th style="text-align:center">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">applcation.yml</td>
+<td style="text-align:center">与环境无关的配置</td>
+</tr>
+<tr>
+<td style="text-align:center">application-dev.yml</td>
+<td style="text-align:center">开发环境</td>
+</tr>
+<tr>
+<td style="text-align:center">application-beta.yml</td>
+<td style="text-align:center">测试环境</td>
+</tr>
+<tr>
+<td style="text-align:center">application-prod.yml</td>
+<td style="text-align:center">生产环境</td>
+</tr>
+</tbody>
+</table>
+<p>这样，诸如数据库连接、应用端口号这类Spring Boot配置便能区分开来，不同环境拥有属于自己的独特空间。但是如果工程中使用了Logback、Dubbo等中间件，你就会发现还有些配置存在于独立文件中、而不能与上述文件进行整合，因此不能根据环境给出不同配置。要解决这一问题，还需要配合Maven Profile和Filtering来完成环境打包。</p>
+<h1 id="两种方案异同点对比"><a href="#两种方案异同点对比" class="headerlink" title="两种方案异同点对比"></a>两种方案异同点对比</h1><p>Spring Profile用于控制<code>applcation-*.yml</code>文件的加载情况，通常定义在<code>applcation.yml</code>里面：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  profiles:</span> </span><br><span class="line"><span class="attr">    active:</span> <span class="string">beta</span></span><br></pre></td></tr></table></figure>
+<p>而<code>pom.xml</code>文件中通常定义了Profile标识与资源路径的对应关系：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">profiles.dir</span>&gt;</span>src/profiles<span class="tag">&lt;/<span class="name">profiles.dir</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">profiles</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>beta<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">directory</span>&gt;</span>$&#123;profiles.dir&#125;/beta<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>例如，勾选这里了<strong>beta</strong>环境，那么<code>src/profiles/beta</code>目录下的文件将会拷贝到target底下供使用：</p>
+<p><img src="spring_boot_dir.png" alt="Maven目录结构"></p>
+<h1 id="整合方案"><a href="#整合方案" class="headerlink" title="整合方案"></a>整合方案</h1><p>如果实际使用过两种方案，相信很快就会遇到这样的问题：选用某个Maven Profile的时候，<code>spring.profiles.active</code>如何能够保持同步切换呢？博主经过一番探索，发现Maven Filtering可以解决这个难题。</p>
+<ul>
+<li>首先，把<code>spring.profiles.active</code>改造成下面这个样子，即将Profile抽取为某个占位符：</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  profiles:</span><br><span class="line">    active: @spring.profiles.active@</span><br></pre></td></tr></table></figure>
+<ul>
+<li>其次，增加maven-resources-plugin插件对上述占位符的替换支持：</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">resource.delimiter</span>&gt;</span>@<span class="tag">&lt;/<span class="name">resource.delimiter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-resources-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">delimiters</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">delimiter</span>&gt;</span>$&#123;resource.delimiter&#125;<span class="tag">&lt;/<span class="name">delimiter</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">delimiters</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">useDefaultDelimiters</span>&gt;</span>false<span class="tag">&lt;/<span class="name">useDefaultDelimiters</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>最后，增加<code>@spring.profiles.active@</code>占位符与Profile标识的对应关系：</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">profiles</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>beta<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">spring.profiles.active</span>&gt;</span>beta<span class="tag">&lt;/<span class="name">spring.profiles.active</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">directory</span>&gt;</span>$&#123;profiles.dir&#125;/beta<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><ul>
+<li><a href="http://blog.javachen.com/2016/02/22/profile-usage-in-spring-boot.html" target="_blank" rel="noopener">Spring Boot Profile使用</a></li>
+</ul>
+
         所有文章非特别说明皆为原创。技术更迭迅猛，部分内容可能会作修改，为保证信息与源同步，转载时请务必注明文章出处！谢谢合作 :-)
       
     </div>
@@ -508,7 +560,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#两种方案异同点对比"><span class="nav-number">1.</span> <span class="nav-text">两种方案异同点对比</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#整合方案"><span class="nav-number">2.</span> <span class="nav-text">整合方案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文章"><span class="nav-number">3.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
             
           </div>
         </section>

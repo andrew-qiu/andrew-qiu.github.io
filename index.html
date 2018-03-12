@@ -303,8 +303,35 @@
       
         
           
-          
-          
+          Spring Boot配置文件除了存在公有部分外，还可根据不同环境作差异化区分。例如：通过指定spring.profiles.active来设置哪些Profiles将被激活
+
+
+
+字段名
+用途
+
+
+
+
+applcation.yml
+与环境无关的配置
+
+
+application-dev.yml
+开发环境
+
+
+application-beta.yml
+测试环境
+
+
+application-prod.yml
+生产环境
+
+
+
+这样，诸如数据库连接、应用端口号这类Spring Boot配置便能区分开来，不
+          ...
           <div class="post-more-link text-center">
             <a class="btn" href="/2018/02/23/spring-boot-env-profile/" rel="contents">
               阅读全文 &raquo;
