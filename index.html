@@ -303,7 +303,7 @@
       
         
           
-          Spring Boot配置文件除了存在公有部分外，还可根据不同环境作差异化区分。例如：通过指定spring.profiles.active来设置哪些Profiles将被激活
+          Spring Boot配置文件除了存在公有部分外，有时还要根据不同环境作差异化定制，例如：数据库连接、应用端口号等等。以下是常见的配置结构：
 
 
 
@@ -330,7 +330,7 @@ application-prod.yml
 
 
 
-这样，诸如数据库连接、应用端口号这类Spring Boot配置便能区分开来，不
+另外一种情况是，Logback、Dubbo这种中间件配置通常独立存在，即无法整合到applcation-*.y
           ...
           <div class="post-more-link text-center">
             <a class="btn" href="/2018/02/23/spring-boot-env-profile/" rel="contents">
